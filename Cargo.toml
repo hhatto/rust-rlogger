@@ -1,0 +1,12 @@
+[package]
+name = "rlogger"
+version = "0.1.0"
+authors = ["Hideo Hattori <hattori-h@klab.com>"]
+
+[dependencies]
+unix_socket = "0.5"
+time = "0.1"
+byteorder = "0.5"
+
+[dev-dependencies]
+tempdir = "0.3"
