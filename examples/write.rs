@@ -6,5 +6,5 @@ fn main() {
     let mut logger = RLogger::new(socket_path);
     let tag = "this.is.tag";
     let msg = "this is application log";
-    logger.write(tag, msg);
+    let _ = logger.write(tag, msg);
 }
