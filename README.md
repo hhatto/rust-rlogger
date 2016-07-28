@@ -11,6 +11,14 @@ Rust client for [rlogd](https://github.com/pandax381/rlogd)'s rloggerd.
 rlogger = { git = "https://github.com/hhatto/rust-rlogger.git", branch = "master" }
 ```
 
+`cargo-edit`
+
+You can also use `cargo-edit` to add this package to your `Cargo.toml`.
+
+```sh
+$ cargo add rlogger --git=https://github.com/hhatto/rust-rlogger.git
+```
+
 # Usage
 
 ```rust
