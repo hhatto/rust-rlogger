@@ -1,4 +1,3 @@
-extern crate unix_socket;
 extern crate time;
 extern crate byteorder;
 

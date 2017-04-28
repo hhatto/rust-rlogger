@@ -2,7 +2,7 @@ use std::io;
 use std::io::prelude::*;
 use time;
 use byteorder::{BigEndian, WriteBytesExt};
-use unix_socket::UnixStream;
+use std::os::unix::net::UnixStream;
 
 static RLOGGER_VERSION: i8 = 1;
 const RLOGGER_PSH: i8 = 1;
@@ -107,7 +107,7 @@ mod tests {
     use std::path::Path;
     use std::io::prelude::*;
     use std::thread;
-    use unix_socket::UnixListener;
+    use std::os::unix::net::UnixListener;
 
     fn handle_client(listener: UnixListener) {
         for stream in listener.incoming() {
