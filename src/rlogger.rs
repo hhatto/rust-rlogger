@@ -31,10 +31,10 @@ struct RLoggerPacket {
 
 impl RLoggerPacket {
     fn new(tag: &str, msg: &str) -> RLoggerPacket {
-        let t = time::get_time();
+        let t = time::OffsetDateTime::now_utc();
         let tag_len = tag.as_bytes().len();
 
-        let (messages, msg_pkt_len) = RLoggerPacket::gen_message(t, msg);
+        let (messages, msg_pkt_len) = RLoggerPacket::gen_message(t.unix_timestamp(), msg);
 
         let rlogger_header = RLoggerHeader {
             version: RLOGGER_VERSION,
@@ -50,13 +50,13 @@ impl RLoggerPacket {
         }
     }
 
-    fn gen_message(t: time::Timespec, msg: &str) -> (Vec<RLoggerMessage>, usize) {
+    fn gen_message(t: i64, msg: &str) -> (Vec<RLoggerMessage>, usize) {
         let mut all_msg_len: usize = 0;
         let mut ret = vec![];
         for line in msg.lines() {
             let msg_len = line.len();
             let rlogger_msg = RLoggerMessage {
-                time: t.sec as i32,
+                time: t as i32,
                 msg_len: msg_len as i32,
                 msg: line.as_bytes().to_vec(),
             };
